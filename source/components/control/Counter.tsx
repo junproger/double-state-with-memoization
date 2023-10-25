@@ -5,6 +5,8 @@ import styles from './counter.module.css';
 import { uidkey } from '../../helpers/uidkey';
 import { logging } from '../../utils/logging';
 
+import { Button } from './Button';
+
 export interface ICounter {
   index: number;
   selected: (uid: string) => void;
@@ -21,9 +23,9 @@ export const Counter: FC<ICounter> = ({ index, selected, summator }) => {
   };
   return (
     <p className={styles['row']}>
-      <button value={getItemCount} onClick={btnHandle}>
-        {uidkey(index)} Item amount {getItemCount}
-      </button>
+      <Button callback={btnHandle} btnvalue={getItemCount}>
+        {uidkey(index)}. Item amount:
+      </Button>
     </p>
   );
 };
