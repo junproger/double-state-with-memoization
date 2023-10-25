@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import { FC, useCallback, useState } from 'react';
 
 import * as styles from './main.module.css';
 
@@ -13,13 +13,16 @@ import { Editable } from '../control/Editable';
 export const Main: FC = () => {
   logging('MAIN is rendered');
   const [getSumItems, setSumItems] = useState<{ [key: string]: number }>({});
-  const selected = (uid: string): void =>
-    setSumItems((prevVal) => {
-      return {
-        ...prevVal,
-        [uid]: 1,
-      };
-    });
+  const selected = useCallback(
+    (uid: string): void =>
+      setSumItems((prevVal) => {
+        return {
+          ...prevVal,
+          [uid]: 1,
+        };
+      }),
+    []
+  );
   return (
     <main className={styles['main']}>
       <Show sumitems={getSumItems} />

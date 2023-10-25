@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, memo } from 'react';
 
 import * as styles from './editable.module.css';
 
@@ -13,7 +13,7 @@ export interface IEditable {
   selected: (uid: string) => void;
 }
 
-export const Editable: FC<IEditable> = ({ quantity, selected }) => {
+const memoEditable: FC<IEditable> = ({ quantity, selected }) => {
   logging('EDITABLE is rendered');
   return (
     <div className={styles['block']}>
@@ -23,3 +23,5 @@ export const Editable: FC<IEditable> = ({ quantity, selected }) => {
     </div>
   );
 };
+
+export const Editable = memo(memoEditable);
