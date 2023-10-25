@@ -6,6 +6,8 @@ import { uidkey } from '../../helpers/uidkey';
 
 import { logging } from '../../utils/logging';
 
+import { Counter } from './Counter';
+
 export interface IEditable {
   quantity: number;
 }
@@ -15,7 +17,7 @@ export const Editable: FC<IEditable> = ({ quantity }) => {
   return (
     <div className={styles['block']}>
       {[...Array(quantity).keys()].map((index) => (
-        <p key={uidkey(index)}>Counter</p>
+        <Counter key={uidkey(index)} index={index} />
       ))}
     </div>
   );
