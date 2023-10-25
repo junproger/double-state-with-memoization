@@ -23,9 +23,10 @@ export const Main: FC = () => {
       }),
     []
   );
+  const sumitems = Object.keys(getSumItems).length;
   return (
     <main className={styles['main']}>
-      <Show sumitems={getSumItems} />
+      <Show sumitems={sumitems} />
       <Editable quantity={counters} selected={selected} />
     </main>
   );
