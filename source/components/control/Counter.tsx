@@ -7,13 +7,15 @@ import { logging } from '../../utils/logging';
 
 export interface ICounter {
   index: number;
+  selected: (uid: string) => void;
 }
 
-export const Counter: FC<ICounter> = ({ index }) => {
+export const Counter: FC<ICounter> = ({ index, selected }) => {
   logging('COUNTER is rendered');
   const [getItemCount, setItemCount] = useState(0);
   const btnHandle = (): void => {
     setItemCount((prevVal) => prevVal + 1);
+    selected(uidkey(index));
   };
   return (
     <p className={styles['row']}>
