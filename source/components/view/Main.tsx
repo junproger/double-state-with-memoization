@@ -14,6 +14,7 @@ import { Editable } from '../control/Editable';
 export const Main: FC = () => {
   logging('MAIN is rendered');
   const [getSumItems, setSumItems] = useState<{ [key: string]: number }>({});
+  const [getTotalSum, setTotalSum] = useState(0);
   const selected = useCallback(
     (uid: string): void =>
       setSumItems((prevVal) => {
@@ -24,10 +25,11 @@ export const Main: FC = () => {
       }),
     []
   );
+  const summator = useCallback((): void => setTotalSum((prevVal) => prevVal + 1), []);
   return (
     <main className={styles['main']}>
-      <Show sumitems={objlen(getSumItems)} />
-      <Editable quantity={counters} selected={selected} />
+      <Show sumitems={objlen(getSumItems)} totalsum={getTotalSum} />
+      <Editable quantity={counters} selected={selected} summator={summator} />
     </main>
   );
 };
