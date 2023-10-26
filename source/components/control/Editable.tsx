@@ -3,6 +3,7 @@ import { FC, memo } from 'react';
 import * as styles from './editable.module.css';
 
 import { uidkey } from '../../helpers/uidkey';
+import { range } from '../../helpers/range';
 
 import { logging } from '../../utils/logging';
 
@@ -18,7 +19,7 @@ const memoEditable: FC<IEditable> = ({ quantity, selected, summator }) => {
   logging('EDITABLE is rendered');
   return (
     <div className={styles['block']}>
-      {[...Array(quantity).keys()].map((index) => (
+      {range(quantity).map((index) => (
         <Counter key={uidkey(index)} index={index} selected={selected} summator={summator} />
       ))}
     </div>
