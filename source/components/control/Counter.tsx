@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 
-import styles from './counter.module.css';
+import * as styles from './counter.module.css';
 
 import { uidkey } from '../../helpers/uidkey';
 import { logging } from '../../utils/logging';
