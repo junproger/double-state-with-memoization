@@ -15,7 +15,7 @@ export interface IEditable {
   summator: () => void;
 }
 
-const memoEditable: FC<IEditable> = ({ quantity, selected, summator }) => {
+const EditableMemo: FC<IEditable> = ({ quantity, selected, summator }) => {
   logging('EDITABLE is rendered');
   return (
     <div className={styles['block']}>
@@ -26,4 +26,4 @@ const memoEditable: FC<IEditable> = ({ quantity, selected, summator }) => {
   );
 };
 
-export const Editable = memo(memoEditable);
+export const Editable = memo(EditableMemo);
